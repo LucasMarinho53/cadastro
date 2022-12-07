@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 1
+      Cadastro de Produtos
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -9,9 +9,44 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
+      <ion-title size="large">Cadastro de Produtos</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+  <form [formGroup]="produtoForm" fullscreen (submit)="addProduto()">
+    <ion-list lines="full" class="ion-no-margin ion-no-padding">
+      <ion-item>
+        <ion-label position="stacked">Nome do Produto</ion-label>
+        <ion-input formControlName="nome" type="text" required></ion-input>
+      </ion-item>
+    </ion-list>
+    <ion-list lines="full" class="ion-no-margin ion-no-padding">
+      <ion-item>
+        <ion-label position="stacked">Quantidade em Estoque</ion-label>
+        <ion-input formControlName="quantidade" type="number" required></ion-input>
+      </ion-item>
+    </ion-list>
+    <ion-list lines="full" class="ion-no-margin ion-no-padding">
+      <ion-item>
+        <ion-label position="stacked">Preço de Compra</ion-label>
+        <ion-input formControlName="precoCompra" type="number" required></ion-input>
+      </ion-item>
+    </ion-list>
+    <ion-list lines="full" class="ion-no-margin ion-no-padding">
+      <ion-item>
+        <ion-label position="stacked">Preço de Venda</ion-label>
+        <ion-input formControlName="precoVenda" type="number" required></ion-input>
+      </ion-item>
+    </ion-list>
+    <ion-list lines="full" class="ion-no-margin ion-no-padding">
+      <ion-item>
+        <ion-label position="stacked">Fornecedor</ion-label>
+        <ion-input formControlName="fornecedor" type="text" required></ion-input>
+      </ion-item>
+    </ion-list>
+    <div class="ion-padding">
+      <ion-button [disabled]="produtoForm.invalid" expand="block" type="submit" class="ion-no-margin">Cadastrar</ion-button>
+    </div>
+  </form>
+
 </ion-content>

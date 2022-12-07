@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 2
+      Listagem de Produtos
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -9,9 +9,30 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
+      <ion-title size="large">Listagem de Produtos</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+  <ion-content>
+  <ion-grid class="ion-grid-padding">
+    <ion-row>
+        <ion-col>#</ion-col>
+        <ion-col>Nome do Produto</ion-col>
+        <ion-col>Quantidade em Estoque</ion-col>
+        <ion-col>Preço de Compra</ion-col>
+        <ion-col>Preço de Venda</ion-col>
+        <ion-col>Fornecedor</ion-col>
+    </ion-row>
+
+    <ion-row>
+        <ion-col>1</ion-col>
+        <ion-col>Quadro Batman</ion-col>
+        <ion-col>1</ion-col>
+        <ion-col>100,00</ion-col>
+        <ion-col>120,00</ion-col>
+        <ion-col>StarQuadros</ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>
 </ion-content>
