@@ -1,4 +1,8 @@
 import { Component } from '@angular/core';
+import { ModalController } from '@ionic/angular';
+import { ModalFornecedorDetailsComponent } from '../modal-fornecedor-details/modal-fornecedor-details.component';
+import { Fornecedor } from '../model/fornecedor.model';
+import { FornecedorService } from '../services/fornecedor.service';
 
 @Component({
   selector: 'app-tab4',
@@ -7,6 +11,30 @@ import { Component } from '@angular/core';
 })
 export class Tab4Page {
 
-  constructor() {}
+  fornecedores!: Fornecedor[];
+
+  constructor(private service: FornecedorService, private modalCtrl: ModalController) {}
+
+  public ionViewWillLeave(): void {
+    this.listaProduto();
+  };
+
+  listaProduto() {
+    this.service.getFornecedores().subscribe({
+      next:(result) => this.fornecedores = result,
+      error:(err) => console.error(err),
+    });
+  }
+
+  async openModal(id:number) {
+    const fornecedor = this.fornecedores.find(fornecedor => fornecedor.id === id);
+    const modal = await this.modalCtrl.create({
+      component: ModalFornecedorDetailsComponent,
+      componentProps: {
+        'fornecedor': fornecedor
+      }
+    });
+    return await modal.present();
+  }
 
 }

@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { constants } from 'buffer';
 import { Constants } from '../model/constants';
 import { Produto } from '../model/produto.model';
+import { Router } from '@angular/router';
 import { ProdutoService } from '../services/produto.service';
 
 @Component({
@@ -15,7 +16,7 @@ export class Tab1Page {
   produtoForm!: FormGroup;
   statusCadastro!:string;
 
-  constructor(private formBuilder: FormBuilder, private produtoService: ProdutoService) {}
+  constructor(private formBuilder: FormBuilder, private produtoService: ProdutoService, private router: Router) {}
 
   ngOnInit(): void{
     this.produtoForm = this.formBuilder.group({
@@ -34,8 +35,7 @@ export class Tab1Page {
         .subscribe({
           next: (result:any) => {
             this.produtoForm.reset();
-            console.info('[AddProduto]', result);
-            this.statusCadastro = Constants.MSG_SUCESSO;
+            this.router.navigateByUrl('/tabs/tab2');
           },
           error: (error:any) => { console.log(error)}
         })

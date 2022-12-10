@@ -7,6 +7,14 @@
       "precoCompra": "100",
       "precoVenda": "125",
       "fornecedor": "Empresa exemplo"
+    },
+    {
+      "nome": "Quadro Superman",
+      "quantidade": 1,
+      "precoCompra": 120,
+      "precoVenda": 140,
+      "fornecedor": "StarFrames",
+      "id": 2
     }
   ],
   "fornecedor": [
@@ -31,6 +39,28 @@
       "cidade": "Cidade Teste",
       "cep": "123456789",
       "id": 2
+    },
+    {
+      "nome": "HeroHQ",
+      "cnpj": 123456789,
+      "contato": "12345678",
+      "logradouro": "Rua Hero",
+      "numero": "72",
+      "bairro": "Bairro Hero",
+      "cidade": "Hero City",
+      "cep": "123456",
+      "id": 3
+    },
+    {
+      "nome": "Quadros RJ",
+      "cnpj": 12345678,
+      "contato": "12345678",
+      "logradouro": "Rua quadro",
+      "numero": "12",
+      "bairro": "quadro",
+      "cidade": "quadro city",
+      "cep": "123456",
+      "id": 4
     }
   ]
 }

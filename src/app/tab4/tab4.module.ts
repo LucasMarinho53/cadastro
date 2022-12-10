@@ -8,6 +8,7 @@ import { Tab4Page } from './tab4.page';
 import { Tab4PageRoutingModule } from './tab4-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { FornecedorService } from '../services/fornecedor.service';
+import { ModalFornecedorDetailsModule } from '../modal-fornecedor-details/modal-fornecedor-details.module';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { FornecedorService } from '../services/fornecedor.service';
     CommonModule,
     FormsModule,
     HttpClientModule,
-    Tab4PageRoutingModule
+    Tab4PageRoutingModule,
+    ModalFornecedorDetailsModule
   ],
   declarations: [Tab4Page],
   providers: [FornecedorService]

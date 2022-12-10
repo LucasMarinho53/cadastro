@@ -22,3 +22,48 @@ ion-col:last-child{
 ion-row:last-child{
   border-right: 1px solid white;
 }
+
+@media screen and (max-width: 575px){
+  .hidden-xs-col{
+    display: none;
+  }
+  .show-xs-col{
+    display: block;
+  }
+}
+
+@media screen and (min-width: 576px) and (max-width: 767px){
+  .hidden-sm-col{
+    display: none;
+  }
+  .show-sm-col{
+    display: block;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 991px){
+  .hidden-md-col{
+    display:none;
+  }
+  .show-md-col{
+    display: block;
+  }
+}
+
+@media screen and (min-width: 992px) and (max-width: 1199px){
+  .hidden-lg-col{
+    display:none;
+  }
+  .show-md-col{
+    display: block;
+  }
+}
+
+@media screen and (min-width: 1200px){
+  .show-xl-col-down{
+    display:none;
+  }
+  .show-xl-col{
+    display: block;
+  }
+}

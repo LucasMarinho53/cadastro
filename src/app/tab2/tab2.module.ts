@@ -8,6 +8,8 @@ import { Tab2Page } from './tab2.page';
 import { Tab2PageRoutingModule } from './tab2-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ProdutoService } from '../services/produto.service';
+import { ModalProdutoDetailsModule } from '../modal-produto-details/modal-produto-details.module';
+
 
 @NgModule({
   imports: [
@@ -15,7 +17,8 @@ import { ProdutoService } from '../services/produto.service';
     CommonModule,
     FormsModule,
     Tab2PageRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ModalProdutoDetailsModule
   ],
   declarations: [Tab2Page],
   providers: [ProdutoService]
