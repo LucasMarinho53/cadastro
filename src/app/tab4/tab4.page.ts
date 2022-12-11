@@ -3,7 +3,7 @@ import { ModalController } from '@ionic/angular';
 import { ModalFornecedorDetailsComponent } from '../modal-fornecedor-details/modal-fornecedor-details.component';
 import { Fornecedor } from '../model/fornecedor.model';
 import { FornecedorService } from '../services/fornecedor.service';
-
+import { OverlayEventDetail } from '@ionic/core'
 @Component({
   selector: 'app-tab4',
   templateUrl: 'tab4.page.html',
@@ -16,10 +16,10 @@ export class Tab4Page {
   constructor(private service: FornecedorService, private modalCtrl: ModalController) {}
 
   public ionViewWillLeave(): void {
-    this.listaProduto();
+    this.listaFornecedor();
   };
 
-  listaProduto() {
+  listaFornecedor() {
     this.service.getFornecedores().subscribe({
       next:(result) => this.fornecedores = result,
       error:(err) => console.error(err),
@@ -34,7 +34,15 @@ export class Tab4Page {
         'fornecedor': fornecedor
       }
     });
+
+    modal.onWillDismiss().then(
+      event => {
+        if(event.role === 'cancel'){
+          this.listaFornecedor();
+        }
+      }
+    );
+
     return await modal.present();
   }
-
 }

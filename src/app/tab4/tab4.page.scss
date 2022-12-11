@@ -16,6 +16,10 @@ ion-col {
   border-right: 0;
 }
 
+ion-row:last-child {
+  border-bottom: 1px solid white;
+}
+
 ion-col:last-child{
   border-right: 1px solid white;
 }

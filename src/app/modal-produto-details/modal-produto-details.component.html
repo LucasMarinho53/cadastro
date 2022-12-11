@@ -24,7 +24,19 @@
       <ion-note slot="start">Fornecedor</ion-note>
       <ion-label>{{produto.fornecedor}}</ion-label>
     </ion-item>
+    <ion-item>
+      <ion-note slot="start">Margem de lucro</ion-note>
+      <ion-label>{{produto.lucro}}</ion-label>
+    </ion-item>
   </ion-item-group>
-  <ion-item-group>
-  </ion-item-group>
+
+    <ion-row class="ion-justify-content-between">
+      <ion-col size="4" class="ion-text-center">
+        <ion-button size="small" shape="round" (click)="edit(produto.id)" color="tertiary">Editar <ion-icon slot="end" name="pencil-outline"></ion-icon></ion-button>
+      </ion-col>
+      <ion-col size="4" class="ion-text-center">
+        <ion-button size="small" shape="round" (click)="delete(produto.id)" color="danger">Excluir <ion-icon name="trash-outline"></ion-icon></ion-button>
+      </ion-col>
+    </ion-row>
+
 </ion-content>

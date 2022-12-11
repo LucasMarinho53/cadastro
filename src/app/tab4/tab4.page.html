@@ -18,25 +18,25 @@
         <ion-row>
           <ion-col size="1">#</ion-col>
           <ion-col size="7">Razão Social</ion-col>
-          <ion-col class="hidden-xs-col">Cnpj</ion-col>
-          <ion-col class="hidden-xs-col">Contato</ion-col>
-          <ion-col class="hidden-xs-col">Logradouro</ion-col>
-          <ion-col class="hidden-xs-col">Número</ion-col>
-          <ion-col class="hidden-xs-col">Bairro</ion-col>
-          <ion-col class="hidden-xs-col">Cidade</ion-col>
-          <ion-col class="hidden-xs-col">CEP</ion-col>
+          <ion-col class="ion-hide-md-down">Cnpj</ion-col>
+          <ion-col class="ion-hide-md-down">Contato</ion-col>
+          <ion-col class="ion-hide-md-down">Logradouro</ion-col>
+          <ion-col class="ion-hide-md-down">Número</ion-col>
+          <ion-col class="ion-hide-md-down">Bairro</ion-col>
+          <ion-col class="ion-hide-md-down">Cidade</ion-col>
+          <ion-col class="ion-hide-md-down">CEP</ion-col>
           <ion-col size="4" class="show-xs-col hidden-xl-col hidden-lg-col">Detalhes</ion-col>
         </ion-row>
         <ion-row *ngFor="let fornecedor of fornecedores">
           <ion-col size="1">{{ fornecedor.id }}</ion-col>
           <ion-col size="7">{{ fornecedor.nome }}</ion-col>
-          <ion-col class="hidden-xs-col">{{ fornecedor.cnpj }}</ion-col>
-          <ion-col class="hidden-xs-col">{{ fornecedor.contato }}</ion-col>
-          <ion-col class="hidden-xs-col">{{ fornecedor.logradouro }}</ion-col>
-          <ion-col class="hidden-xs-col">{{ fornecedor.numero }}</ion-col>
-          <ion-col class="hidden-xs-col">{{ fornecedor.bairro }}</ion-col>
-          <ion-col class="hidden-xs-col">{{ fornecedor.cidade }}</ion-col>
-          <ion-col class="hidden-xs-col">{{ fornecedor.cep }}</ion-col>
+          <ion-col class="ion-hide-md-down">{{ fornecedor.cnpj }}</ion-col>
+          <ion-col class="ion-hide-md-down">{{ fornecedor.contato }}</ion-col>
+          <ion-col class="ion-hide-md-down">{{ fornecedor.logradouro }}</ion-col>
+          <ion-col class="ion-hide-md-down">{{ fornecedor.numero }}</ion-col>
+          <ion-col class="ion-hide-md-down">{{ fornecedor.bairro }}</ion-col>
+          <ion-col class="ion-hide-md-down">{{ fornecedor.cidade }}</ion-col>
+          <ion-col class="ion-hide-md-down">{{ fornecedor.cep }}</ion-col>
           <ion-col size="4" class="show-xs-col hidden-md-col hidden-xl-col hidden-lg-col"><ion-button class="btn-modal" fill="clear" (click)="openModal(fornecedor.id)">Show</ion-button></ion-col>
         </ion-row>
     </ion-grid>

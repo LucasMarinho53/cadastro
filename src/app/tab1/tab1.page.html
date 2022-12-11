@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Cadastro de Produtos
+      {{editable ? 'Edição de Produto' : 'Cadastro de Produtos'}}
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -9,11 +9,11 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Cadastro de Produtos</ion-title>
+      <ion-title size="large">{{editable ? 'Edição de Produto' : 'Cadastro de Produtos'}}</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <form [formGroup]="produtoForm" fullscreen (submit)="addProduto()">
+  <form [formGroup]="produtoForm" fullscreen (submit)="editable ? editProduto() : addProduto()">
     <ion-list lines="full" class="ion-no-margin ion-no-padding">
       <ion-item>
         <ion-label position="stacked">Nome do Produto</ion-label>
@@ -44,8 +44,14 @@
         <ion-input formControlName="fornecedor" type="text" required></ion-input>
       </ion-item>
     </ion-list>
+    <ion-list lines="full" class="ion-no-margin ion-no-padding">
+      <ion-item>
+        <ion-label position="stacked">Margem de lucro</ion-label>
+        <ion-input formControlName="lucro" type="text" required></ion-input>
+      </ion-item>
+    </ion-list>
     <div class="ion-padding">
-      <ion-button [disabled]="produtoForm.invalid" expand="block" type="submit" class="ion-no-margin">Cadastrar</ion-button>
+      <ion-button [disabled]="produtoForm.invalid" expand="block" type="submit" class="ion-no-margin">{{editable ? 'Editar' : 'Cadastrar'}}</ion-button>
     </div>
   </form>
 

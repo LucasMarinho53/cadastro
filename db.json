@@ -1,56 +1,25 @@
 {
   "produto": [
     {
-      "id": 1,
-      "nome": "Produto exemplo",
+      "nome": "Produto",
       "quantidade": "10",
       "precoCompra": "100",
       "precoVenda": "125",
-      "fornecedor": "Empresa exemplo"
+      "fornecedor": "Empresa exemplo",
+      "lucro": "12",
+      "id": 1
     },
     {
-      "nome": "Quadro Superman",
+      "nome": "Teste",
       "quantidade": 1,
-      "precoCompra": 120,
-      "precoVenda": 140,
-      "fornecedor": "StarFrames",
-      "id": 2
+      "precoCompra": 12,
+      "precoVenda": 12,
+      "fornecedor": "Teste",
+      "lucro": "2",
+      "id": 3
     }
   ],
   "fornecedor": [
-    {
-      "id": 1,
-      "nome": "Empresa exemplo",
-      "cnpj": "12345678",
-      "contato": "29654565",
-      "logradouro": "Rua exemplo",
-      "numero": "74",
-      "bairro": "tal tal tal",
-      "cidade": "cidade exemplo",
-      "cep": "123456"
-    },
-    {
-      "nome": "Empresa teste",
-      "cnpj": 12345678,
-      "contato": "12345678",
-      "logradouro": "Rua teste",
-      "numero": "12345678",
-      "bairro": "Bairro teste",
-      "cidade": "Cidade Teste",
-      "cep": "123456789",
-      "id": 2
-    },
-    {
-      "nome": "HeroHQ",
-      "cnpj": 123456789,
-      "contato": "12345678",
-      "logradouro": "Rua Hero",
-      "numero": "72",
-      "bairro": "Bairro Hero",
-      "cidade": "Hero City",
-      "cep": "123456",
-      "id": 3
-    },
     {
       "nome": "Quadros RJ",
       "cnpj": 12345678,

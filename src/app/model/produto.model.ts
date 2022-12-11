@@ -5,4 +5,5 @@ export interface Produto{
   precoCompra:number;
   precoVenda:number;
   fornecedor:string;
+  lucro:number;
 }

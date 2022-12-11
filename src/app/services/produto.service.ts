@@ -23,7 +23,7 @@ export class ProdutoService {
   }
 
   getProduto(id: number): Observable<Produto> {
-    return this.http.get<Produto>(`${API_URL}/produto/$(id)`);
+    return this.http.get<Produto>(`${API_URL}/produto/${id}`);
   }
 
   getProdutos(): Observable<Produto[]> {

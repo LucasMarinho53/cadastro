@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Cadastro de Fornecedor
+      {{editable ? 'Edição de Fornecedor' : 'Cadastro de Fornecedores'}}
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -9,11 +9,11 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Cadastro de Fornecedor</ion-title>
+      <ion-title size="large">{{editable ? 'Edição de Fornecedor' : 'Cadastro de Fornecedores'}}</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <form [formGroup]="fornecedorForm" fullscreen (submit)="addFornecedor()">
+  <form [formGroup]="fornecedorForm" fullscreen (submit)="editable ? editFornecedor() : addFornecedor()">
     <ion-item-group>
     <ion-list lines="full" class="ion-no-margin ion-no-padding">
         <ion-item-divider>
@@ -75,7 +75,7 @@
   </ion-item-group>
 
     <div class="ion-padding">
-      <ion-button [disabled]="fornecedorForm.invalid" expand="block" type="submit" class="ion-no-margin">Cadastrar</ion-button>
+      <ion-button [disabled]="fornecedorForm.invalid" expand="block" type="submit" class="ion-no-margin">{{editable ? 'Editar' : 'Cadastrar'}}</ion-button>
     </div>
   </form>
 

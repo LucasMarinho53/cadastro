@@ -23,7 +23,7 @@ export class FornecedorService {
   }
 
   getFornecedor(id: number): Observable<Fornecedor> {
-    return this.http.get<Fornecedor>(`${API_URL}/fornecedor/$(id)`);
+    return this.http.get<Fornecedor>(`${API_URL}/fornecedor/${id}`);
   }
 
   getFornecedores(): Observable<Fornecedor[]> {
