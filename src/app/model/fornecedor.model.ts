@@ -7,5 +7,5 @@ export interface Fornecedor{
   numero:number;
   bairro:string;
   cidade:string;
-  cep:number;
+  cep:string;
 }

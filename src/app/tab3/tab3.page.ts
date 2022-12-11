@@ -2,7 +2,9 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Constants } from '../model/constants';
+import { Endereco } from '../model/endereco.model';
 import { Fornecedor } from '../model/fornecedor.model';
+import { CorreiosService } from '../services/correios.service';
 import { FornecedorService } from '../services/fornecedor.service';
 
 @Component({
@@ -17,7 +19,10 @@ export class Tab3Page {
   fornecedor!:Fornecedor;
   editable:boolean = false;
 
-  constructor(private formBuilder: FormBuilder, private fornecedorService: FornecedorService, private router: Router, private route: ActivatedRoute) {}
+  constructor(private formBuilder: FormBuilder,
+     private fornecedorService: FornecedorService,
+     private router: Router, private route: ActivatedRoute,
+     private correiosService: CorreiosService) {}
 
   ngOnInit(): void{
     this.fornecedorForm = this.formBuilder.group({
@@ -28,8 +33,8 @@ export class Tab3Page {
       numero: ['',[Validators.required,Validators.minLength(1),Validators.maxLength(100), Validators.pattern(/^[0-9]+$/)]],
       bairro: ['',[Validators.required,Validators.minLength(1),Validators.maxLength(100)]],
       cidade: ['',[Validators.required,Validators.minLength(1),Validators.maxLength(100)]],
-      cep: ['',[Validators.required,Validators.minLength(1),Validators.maxLength(100), Validators.pattern(/^[0-9]+$/)]],
-    });
+      cep: ['',[Validators.required,Validators.minLength(1),Validators.maxLength(100)]],
+      });
 
     this.route.paramMap.subscribe(params => {
       const fornecedorId = +params.get('id')!;
@@ -71,6 +76,23 @@ export class Tab3Page {
       cidade: this.fornecedor.cidade,
       cep: this.fornecedor.cep
     });
+  }
+
+  loadEndereco() {
+    const cep:string = this.fornecedorForm.get('cep')?.value;
+    this.correiosService.getEndereco(cep).subscribe({
+      next: (result:Endereco) => {
+        this.fornecedorForm.patchValue({
+          logradouro: result.logradouro,
+          bairro: result.bairro,
+          cidade: result.localidade,
+          cep: result.cep
+        });
+      },
+      error: (err) => {
+        console.error(err);
+      }
+  });
   }
 
   editFornecedor(){
