@@ -1,22 +1,38 @@
 {
   "produto": [
     {
-      "nome": "Produto",
-      "quantidade": "10",
-      "precoCompra": "100",
-      "precoVenda": "125",
-      "fornecedor": "Empresa exemplo",
+      "nome": "Exemplo",
+      "quantidade": 1,
+      "precoCompra": 12,
+      "fornecedor": "Teste",
       "lucro": "12",
       "id": 1
     },
     {
-      "nome": "Teste",
+      "nome": "Quadro Batman",
       "quantidade": 1,
-      "precoCompra": 12,
-      "precoVenda": 12,
-      "fornecedor": "Teste",
-      "lucro": "2",
+      "precoCompra": 100,
+      "fornecedor": "StarFrames",
+      "lucro": "12",
+      "id": 2
+    },
+    {
+      "nome": "Quadro Bope",
+      "quantidade": 10,
+      "precoCompra": 100,
+      "fornecedor": "StarFrames",
+      "lucro": "12",
+      "precoVenda": 112,
       "id": 3
+    },
+    {
+      "nome": "Quadro Guardiões",
+      "quantidade": 1,
+      "precoCompra": 100,
+      "fornecedor": "StarFrames",
+      "lucro": "12",
+      "precoVenda": 112,
+      "id": 4
     }
   ],
   "fornecedor": [

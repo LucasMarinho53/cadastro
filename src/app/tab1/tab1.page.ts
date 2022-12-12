@@ -25,7 +25,6 @@ export class Tab1Page {
       nome: ['',[Validators.required,Validators.minLength(4),Validators.maxLength(100)]],
       quantidade: ['',[Validators.required,Validators.minLength(1),Validators.maxLength(100), Validators.pattern(/^[0-9]+$/)]],
       precoCompra: ['',[Validators.required,Validators.minLength(1),Validators.maxLength(100), Validators.pattern(/^[0-9]+$/)]],
-      precoVenda: ['',[Validators.required,Validators.minLength(1),Validators.maxLength(100), Validators.pattern(/^[0-9]+$/)]],
       fornecedor: ['',[Validators.required,Validators.minLength(1),Validators.maxLength(100)]],
       lucro: ['',[Validators.required,Validators.minLength(1),Validators.maxLength(100)]],
     });
@@ -48,9 +47,10 @@ export class Tab1Page {
 }
 
   addProduto(){
-    const newProduto = this.produtoForm.getRawValue() as Produto;
+    const produto = this.produtoForm.getRawValue() as Produto;
+    produto.precoVenda = this.compra +(this.compra * this.porcentagem/100)
 
-    this.produtoService.insertProduto(newProduto)
+    this.produtoService.insertProduto(produto)
         .subscribe({
           next: (result:any) => {
             this.produtoForm.reset();
@@ -74,6 +74,7 @@ export class Tab1Page {
   editProduto(){
     const editProduto = this.produtoForm.getRawValue() as Produto;
     editProduto.id = this.produto.id;
+    editProduto.precoVenda = this.compra +(this.compra * this.porcentagem/100)
 
     this.produtoService.updateProduto(editProduto).subscribe({
       next: () => {
@@ -87,4 +88,7 @@ export class Tab1Page {
     });
 
   }
+
+  get compra(){return this.produtoForm.get('precoCompra')?.value}
+  get porcentagem(){return this.produtoForm.get('lucro')?.value}
 }

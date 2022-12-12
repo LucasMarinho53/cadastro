@@ -28,6 +28,7 @@ export class Tab2Page {
 
   async OpenModal(id:number) {
     const produto = this.produtos.find(produto => produto.id === id);
+    console.log(produto)
     const modal = await this.modalCtrl.create({
       component: ModalProdutoDetailsComponent,
       componentProps: {
