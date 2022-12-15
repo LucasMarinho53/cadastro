@@ -37,17 +37,5 @@
       "id": 6
     }
   ],
-  "fornecedor": [
-    {
-      "nome": "Quadros RJ",
-      "cnpj": 12345678,
-      "contato": "12345678",
-      "logradouro": "Rua quadro",
-      "numero": "12",
-      "bairro": "quadro",
-      "cidade": "quadro city",
-      "cep": "123456",
-      "id": 4
-    }
-  ]
+  "fornecedor": []
 }

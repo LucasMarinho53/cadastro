@@ -13,7 +13,7 @@
     </ion-toolbar>
   </ion-header>
 
-  <form [formGroup]="fornecedorForm" fullscreen (submit)="editable ? editFornecedor() : addFornecedor()">
+  <form [formGroup]="fornecedorForm" #createForm="ngForm" (ngSubmit)="createFornecedor(fornecedorForm.value)" fullscreen (submit)="editable ? editFornecedor() : addFornecedor()">
     <ion-item-group>
     <ion-list lines="full" class="ion-no-margin ion-no-padding">
         <ion-item-divider>

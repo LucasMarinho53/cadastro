@@ -58,7 +58,7 @@ export class Tab1Page implements OnInit{
 
     newProduto.precoVenda = this.compra +(this.compra * this.porcentagem/100)
 
-    this.firebaseprodutoService.save(newProduto);
+    this.firebaseprodutoService.saveproduto(newProduto);
     this.createForm.reset();
   }
 

@@ -9,6 +9,7 @@ import { Tab4PageRoutingModule } from './tab4-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { FornecedorService } from '../services/fornecedor.service';
 import { ModalFornecedorDetailsModule } from '../modal-fornecedor-details/modal-fornecedor-details.module';
+import { FirebasefornecedorService } from '../services/firebasefornecedor.service';
 
 @NgModule({
   imports: [
@@ -20,6 +21,6 @@ import { ModalFornecedorDetailsModule } from '../modal-fornecedor-details/modal-
     ModalFornecedorDetailsModule
   ],
   declarations: [Tab4Page],
-  providers: [FornecedorService]
+  providers: [FornecedorService, FirebasefornecedorService]
 })
 export class Tab4PageModule {}

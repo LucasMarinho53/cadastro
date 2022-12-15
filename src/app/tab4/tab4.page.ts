@@ -4,6 +4,7 @@ import { ModalFornecedorDetailsComponent } from '../modal-fornecedor-details/mod
 import { Fornecedor } from '../model/fornecedor.model';
 import { FornecedorService } from '../services/fornecedor.service';
 import { OverlayEventDetail } from '@ionic/core'
+import { FirebasefornecedorService } from '../services/firebasefornecedor.service';
 @Component({
   selector: 'app-tab4',
   templateUrl: 'tab4.page.html',
@@ -13,11 +14,16 @@ export class Tab4Page {
 
   fornecedores!: Fornecedor[];
 
-  constructor(private service: FornecedorService, private modalCtrl: ModalController) {}
+  constructor(private service: FornecedorService,
+    private modalCtrl: ModalController,
+    private firebasefornecedorService: FirebasefornecedorService) {}
 
-  public ionViewWillLeave(): void {
-    this.listaFornecedor();
-  };
+  public ionViewWillEnter(){
+    this.firebasefornecedorService.listfornecedor().subscribe({
+      next: (result) => {this.fornecedores = result},
+      error: (err) => {console.error(err)}
+    })
+  }
 
   listaFornecedor() {
     this.service.getFornecedores().subscribe({
@@ -26,7 +32,7 @@ export class Tab4Page {
     });
   }
 
-  async openModal(id:number) {
+  async openModal(id:string) {
     const fornecedor = this.fornecedores.find(fornecedor => fornecedor.id === id);
     const modal = await this.modalCtrl.create({
       component: ModalFornecedorDetailsComponent,
@@ -34,14 +40,6 @@ export class Tab4Page {
         'fornecedor': fornecedor
       }
     });
-
-    modal.onWillDismiss().then(
-      event => {
-        if(event.role === 'cancel'){
-          this.listaFornecedor();
-        }
-      }
-    );
 
     return await modal.present();
   }

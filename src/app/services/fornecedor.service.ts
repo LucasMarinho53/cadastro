@@ -34,7 +34,7 @@ export class FornecedorService {
     return this.http.put(`${API_URL}/fornecedor/${fornecedor.id}`, fornecedor, HTTP_OPTIONS);
   }
 
-  deleteFornecedor(id: number): Observable<any> {
+  deleteFornecedor(id: string): Observable<any> {
     return this.http.delete(`${API_URL}/fornecedor/${id}`);
   }
 }

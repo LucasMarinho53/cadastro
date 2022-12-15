@@ -9,6 +9,7 @@ import { Tab3PageRoutingModule } from './tab3-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { FornecedorService } from '../services/fornecedor.service';
 import { CorreiosService } from '../services/correios.service';
+import { FirebasefornecedorService } from '../services/firebasefornecedor.service';
 
 @NgModule({
   imports: [
@@ -20,6 +21,6 @@ import { CorreiosService } from '../services/correios.service';
     Tab3PageRoutingModule
   ],
   declarations: [Tab3Page],
-  providers: [FornecedorService, CorreiosService]
+  providers: [FornecedorService, CorreiosService, FirebasefornecedorService]
 })
 export class Tab3PageModule {}

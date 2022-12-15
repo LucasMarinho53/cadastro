@@ -21,12 +21,12 @@ export class ModalFornecedorDetailsComponent implements OnInit {
 
   ngOnInit() {}
 
-  editFornecedor(id:number){
+  editFornecedor(id:string){
     this.router.navigate(['/tabs/editarfor', id]);
     this.modalCtrl.dismiss(null, 'cancel');
   }
 
-  delete(id:number){
+  delete(id:string){
     this.service.deleteFornecedor(id).subscribe({
       next: () => {this.modalCtrl.dismiss(null, 'cancel');},
       error: () => {console.error(console.error);}

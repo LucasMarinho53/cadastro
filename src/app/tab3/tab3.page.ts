@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, ViewChild } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, FormGroupDirective, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Constants } from '../model/constants';
 import { Endereco } from '../model/endereco.model';
 import { Fornecedor } from '../model/fornecedor.model';
 import { CorreiosService } from '../services/correios.service';
+import { FirebasefornecedorService } from '../services/firebasefornecedor.service';
 import { FornecedorService } from '../services/fornecedor.service';
 
 @Component({
@@ -15,6 +16,7 @@ import { FornecedorService } from '../services/fornecedor.service';
 export class Tab3Page {
 
   fornecedorForm!: FormGroup;
+  @ViewChild('createForm') createForm!: FormGroupDirective;
   statusCadastro!:string;
   fornecedor!:Fornecedor;
   editable:boolean = false;
@@ -22,18 +24,19 @@ export class Tab3Page {
   constructor(private formBuilder: FormBuilder,
      private fornecedorService: FornecedorService,
      private router: Router, private route: ActivatedRoute,
-     private correiosService: CorreiosService) {}
+     private correiosService: CorreiosService,
+     private firebasefornecedorService: FirebasefornecedorService) {}
 
   ngOnInit(): void{
-    this.fornecedorForm = this.formBuilder.group({
-      nome: ['',[Validators.required,Validators.minLength(4),Validators.maxLength(100)]],
-      cnpj: ['',[Validators.required,Validators.minLength(1),Validators.maxLength(100), Validators.pattern(/^[0-9]+$/)]],
-      contato: ['',[Validators.required,Validators.minLength(1),Validators.maxLength(100)]],
-      logradouro: ['',[Validators.required,Validators.minLength(1),Validators.maxLength(100)]],
-      numero: ['',[Validators.required,Validators.minLength(1),Validators.maxLength(100), Validators.pattern(/^[0-9]+$/)]],
-      bairro: ['',[Validators.required,Validators.minLength(1),Validators.maxLength(100)]],
-      cidade: ['',[Validators.required,Validators.minLength(1),Validators.maxLength(100)]],
-      cep: ['',[Validators.required,Validators.minLength(1),Validators.maxLength(100)]],
+    this.fornecedorForm = new FormGroup({
+      'nome': new FormControl ('',[Validators.required,Validators.minLength(4),Validators.maxLength(100)]),
+      'cnpj': new FormControl ('',[Validators.required,Validators.minLength(1),Validators.maxLength(100), Validators.pattern(/^[0-9]+$/)]),
+      'contato': new FormControl ('',[Validators.required,Validators.minLength(1),Validators.maxLength(100)]),
+      'logradouro': new FormControl ('',[Validators.required,Validators.minLength(1),Validators.maxLength(100)]),
+      'numero': new FormControl ('',[Validators.required,Validators.minLength(1),Validators.maxLength(100), Validators.pattern(/^[0-9]+$/)]),
+      'bairro': new FormControl ('',[Validators.required,Validators.minLength(1),Validators.maxLength(100)]),
+      'cidade': new FormControl ('',[Validators.required,Validators.minLength(1),Validators.maxLength(100)]),
+      'cep': new FormControl ('',[Validators.required,Validators.minLength(1),Validators.maxLength(100)]),
       });
 
     this.route.paramMap.subscribe(params => {
@@ -50,6 +53,12 @@ export class Tab3Page {
         });
       }
     });
+  }
+
+  createFornecedor(values: any){
+    let newFornecedor:Fornecedor = {...values};
+    this.firebasefornecedorService.savefornecedor(newFornecedor);
+    this.createForm.reset();
   }
 
   addFornecedor(){

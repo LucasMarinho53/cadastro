@@ -20,7 +20,7 @@ export class Tab2Page {
     private firebaseprodutoService: FirebaseprodutoService) {}
 
   public ionViewWillEnter(){
-    this.firebaseprodutoService.list().subscribe({
+    this.firebaseprodutoService.listproduto().subscribe({
       next: (result) => {this.produtos = result},
       error: (err) => {console.error(err)}
     })

@@ -10,12 +10,12 @@ export class FirebaseprodutoService {
 
   constructor(private firestore: Firestore) { }
 
-  save(produto: Produto): Promise<void>{
+  saveproduto(produto: Produto): Promise<void>{
     const document = doc(collection(this.firestore, 'produtos'));
     return setDoc(document, produto);
   }
 
-  list(): Observable<Produto[]> {
+  listproduto(): Observable<Produto[]> {
     const produtosCollection = collection(this.firestore, 'produtos');
     return collectionData(produtosCollection, {idField: 'id'})
     .pipe(
@@ -35,13 +35,13 @@ export class FirebaseprodutoService {
     );
   }
 
-  update(produto: Produto): Promise<void>{
+  updateproduto(produto: Produto): Promise<void>{
     const document = doc(this.firestore, 'produtos', produto?.id);
     const { id, ...data } = produto;
     return setDoc(document, data);
   }
 
-  delete(id: string): Promise<void>{
+  deleteproduto(id: string): Promise<void>{
     const document = doc(this.firestore, 'produtos', id);
     return deleteDoc(document);
   }
