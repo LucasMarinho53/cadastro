@@ -34,7 +34,7 @@ export class ProdutoService {
     return this.http.put(`${API_URL}/produto/${produto.id}`, produto, HTTP_OPTIONS);
   }
 
-  deleteProduto(id: number): Observable<any> {
+  deleteProduto(id: string): Observable<any> {
     return this.http.delete(`${API_URL}/produto/${id}`);
   }
 }

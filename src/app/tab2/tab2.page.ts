@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { ModalController } from '@ionic/angular';
+import { Observable } from 'rxjs';
 import { ModalProdutoDetailsComponent } from '../modal-produto-details/modal-produto-details.component';
 import { Produto } from '../model/produto.model';
+import { FirebaseprodutoService } from '../services/firebaseproduto.service';
 import { ProdutoService } from '../services/produto.service';
 
 @Component({
@@ -13,11 +15,16 @@ export class Tab2Page {
 
   produtos!: Produto[];
 
-  constructor(private service: ProdutoService, private modalCtrl: ModalController) {}
+  constructor(private service: ProdutoService,
+    private modalCtrl: ModalController,
+    private firebaseprodutoService: FirebaseprodutoService) {}
 
-  public ionViewWillEnter(): void {
-    this.listaProduto();
-  };
+  public ionViewWillEnter(){
+    this.firebaseprodutoService.list().subscribe({
+      next: (result) => {this.produtos = result},
+      error: (err) => {console.error(err)}
+    })
+  }
 
   listaProduto() {
     this.service.getProdutos().subscribe({
@@ -26,7 +33,7 @@ export class Tab2Page {
     });
   }
 
-  async OpenModal(id:number) {
+  async OpenModal(id:string) {
     const produto = this.produtos.find(produto => produto.id === id);
     console.log(produto)
     const modal = await this.modalCtrl.create({

@@ -8,6 +8,7 @@ import { Tab1Page } from './tab1.page';
 import { Tab1PageRoutingModule } from './tab1-routing.module';
 import { ProdutoService } from '../services/produto.service';
 import { HttpClientModule } from '@angular/common/http';
+import { FirebaseprodutoService } from '../services/firebaseproduto.service';
 
 @NgModule({
   imports: [
@@ -19,6 +20,6 @@ import { HttpClientModule } from '@angular/common/http';
     Tab1PageRoutingModule
   ],
   declarations: [Tab1Page],
-  providers: [ProdutoService]
+  providers: [ProdutoService, FirebaseprodutoService]
 })
 export class Tab1PageModule {}

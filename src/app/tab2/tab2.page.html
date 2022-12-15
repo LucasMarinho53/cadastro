@@ -16,25 +16,23 @@
   <ion-content>
   <ion-grid class="ion-grid-padding">
     <ion-row>
-        <ion-col size="1">#</ion-col>
         <ion-col size="7">Nome do Produto</ion-col>
         <ion-col class="hidden-xs-col">Quantidade em Estoque</ion-col>
         <ion-col class="hidden-xs-col">Preço de Compra</ion-col>
         <ion-col class="hidden-xs-col">Preço de Venda</ion-col>
         <ion-col class="hidden-xs-col">Fornecedor</ion-col>
         <ion-col class="hidden-xs-col">Margem de lucro</ion-col>
-        <ion-col size="4" class="show-xs-col hidden-xl-col hidden-lg-col">Detalhes</ion-col>
+        <ion-col size="5" class="show-xs-col hidden-xl-col hidden-lg-col">Detalhes</ion-col>
     </ion-row>
 
     <ion-row *ngFor="let produto of produtos">
-        <ion-col size="1">{{ produto.id }}</ion-col>
         <ion-col size="7">{{ produto.nome }}</ion-col>
         <ion-col class="hidden-xs-col">{{ produto.quantidade }}</ion-col>
         <ion-col class="hidden-xs-col">{{ produto.precoCompra }}</ion-col>
         <ion-col class="hidden-xs-col">{{ produto.precoVenda }}</ion-col>
         <ion-col class="hidden-xs-col">{{ produto.fornecedor }}</ion-col>
         <ion-col class="hidden-xs-col">{{ produto.lucro }}</ion-col>
-        <ion-col size="4" class="show-xs-col hidden-md-col hidden-xl-col hidden-lg-col"><ion-button class="btn-modal" fill="clear" (click)="OpenModal(produto.id)">Show</ion-button></ion-col>
+        <ion-col size="5" class="show-xs-col hidden-md-col hidden-xl-col hidden-lg-col"><ion-button class="btn-modal" fill="clear" (click)="OpenModal(produto.id)">Show</ion-button></ion-col>
     </ion-row>
   </ion-grid>
 

@@ -5,6 +5,8 @@ import { Constants } from '../model/constants';
 import { Produto } from '../model/produto.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProdutoService } from '../services/produto.service';
+import { FirebaseprodutoService } from '../services/firebaseproduto.service';
+
 
 @Component({
   selector: 'app-tab1',
@@ -23,7 +25,7 @@ export class Tab1Page implements OnInit{
     private produtoService: ProdutoService,
     private router: Router,
     private route: ActivatedRoute,
-    /*private firebaseService: FirebaseService*/) {}
+    private firebaseprodutoService: FirebaseprodutoService) {}
 
   ngOnInit(): void{
     this.produtoForm = new FormGroup({
@@ -51,17 +53,13 @@ export class Tab1Page implements OnInit{
   });
 }
 
-  OnSubmit(){
-    this.createForm.reset();
-  }
-
   createProduto(values: any){
     let newProduto:Produto = {...values};
 
     newProduto.precoVenda = this.compra +(this.compra * this.porcentagem/100)
 
-    //this.firebaseService.save();
-    console.log(newProduto);
+    this.firebaseprodutoService.save(newProduto);
+    this.createForm.reset();
   }
 
   addProduto(){

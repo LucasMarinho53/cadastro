@@ -21,12 +21,13 @@ export class ModalProdutoDetailsComponent implements OnInit {
 
   ngOnInit() {}
 
-  edit(id:number){
+  edit(id:string){
     this.router.navigate(['/tabs/editar', id]);
     this.modalCtrl.dismiss(null, 'cancel');
   }
 
-  delete(id:number){
+
+  delete(id:string){
     this.service.deleteProduto(id).subscribe({
       next: () => {this.modalCtrl.dismiss(null, 'cancel');},
       error: () => {console.error(console.error);}
