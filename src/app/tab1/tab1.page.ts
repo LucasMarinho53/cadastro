@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, FormGroupDirective, Validators } from '@angular/forms';
 import { constants } from 'buffer';
 import { Constants } from '../model/constants';
 import { Produto } from '../model/produto.model';
@@ -11,22 +11,27 @@ import { ProdutoService } from '../services/produto.service';
   templateUrl: 'tab1.page.html',
   styleUrls: ['tab1.page.scss']
 })
-export class Tab1Page {
+export class Tab1Page implements OnInit{
 
   produtoForm!: FormGroup;
+  @ViewChild('createForm') createForm!: FormGroupDirective;
   statusCadastro!:string;
   produto!:Produto;
   editable:boolean = false;
 
-  constructor(private formBuilder: FormBuilder, private produtoService: ProdutoService, private router: Router, private route: ActivatedRoute) {}
+  constructor(private formBuilder: FormBuilder,
+    private produtoService: ProdutoService,
+    private router: Router,
+    private route: ActivatedRoute,
+    /*private firebaseService: FirebaseService*/) {}
 
   ngOnInit(): void{
-    this.produtoForm = this.formBuilder.group({
-      nome: ['',[Validators.required,Validators.minLength(4),Validators.maxLength(100)]],
-      quantidade: ['',[Validators.required,Validators.minLength(1),Validators.maxLength(100), Validators.pattern(/^[0-9]+$/)]],
-      precoCompra: ['',[Validators.required,Validators.minLength(1),Validators.maxLength(100), Validators.pattern(/^[0-9]+$/)]],
-      fornecedor: ['',[Validators.required,Validators.minLength(1),Validators.maxLength(100)]],
-      lucro: ['',[Validators.required,Validators.minLength(1),Validators.maxLength(100)]],
+    this.produtoForm = new FormGroup({
+      'nome': new FormControl ('',[Validators.required,Validators.minLength(4),Validators.maxLength(100)]),
+      'quantidade': new FormControl ('',[Validators.required,Validators.minLength(1),Validators.maxLength(100), Validators.pattern(/^[0-9]+$/)]),
+      'precoCompra': new FormControl ('',[Validators.required,Validators.minLength(1),Validators.maxLength(100), Validators.pattern(/^[0-9]+$/)]),
+      'fornecedor': new FormControl ('',[Validators.required,Validators.minLength(1),Validators.maxLength(100)]),
+      'lucro': new FormControl ('',[Validators.required,Validators.minLength(1),Validators.maxLength(100)]),
     });
 
 
@@ -45,6 +50,19 @@ export class Tab1Page {
     }
   });
 }
+
+  OnSubmit(){
+    this.createForm.reset();
+  }
+
+  createProduto(values: any){
+    let newProduto:Produto = {...values};
+
+    newProduto.precoVenda = this.compra +(this.compra * this.porcentagem/100)
+
+    //this.firebaseService.save();
+    console.log(newProduto);
+  }
 
   addProduto(){
     const produto = this.produtoForm.getRawValue() as Produto;

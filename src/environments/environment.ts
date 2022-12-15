@@ -4,7 +4,15 @@
 
 export const environment = {
   production: false,
-  correiosWS: 'http://viacep.com.br/ws'
+  correiosWS: 'http://viacep.com.br/ws',
+  firebase: {
+    apiKey: "AIzaSyC8s-aMydoLgPhzamxo7pQkPvkPawI9jZw",
+    authDomain: "cadastro-e6bf2.firebaseapp.com",
+    projectId: "cadastro-e6bf2",
+    storageBucket: "cadastro-e6bf2.appspot.com",
+    messagingSenderId: "1005169449749",
+    appId: "1:1005169449749:web:b939f1e28a67abdd96671c"
+  }
 };
 
 /*

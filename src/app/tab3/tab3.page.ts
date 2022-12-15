@@ -70,11 +70,11 @@ export class Tab3Page {
       nome: this.fornecedor.nome,
       cnpj: this.fornecedor.cnpj,
       contato: this.fornecedor.contato,
-      logradouro: this.fornecedor.logradouro,
+      logradouro: this.fornecedor.endereco.logradouro,
       numero: this.fornecedor.numero,
-      bairro: this.fornecedor.bairro,
-      cidade: this.fornecedor.cidade,
-      cep: this.fornecedor.cep
+      bairro: this.fornecedor.endereco.bairro,
+      cidade: this.fornecedor.endereco.localidade,
+      cep: this.fornecedor.endereco.cep
     });
   }
 

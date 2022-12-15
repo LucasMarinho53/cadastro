@@ -13,39 +13,39 @@
     </ion-toolbar>
   </ion-header>
 
-  <form [formGroup]="produtoForm" fullscreen (submit)="editable ? editProduto() : addProduto()">
+  <form [formGroup]="produtoForm" #createForm="ngForm" (ngSubmit)="createProduto(produtoForm.value)" fullscreen (submit)="editable ? editProduto() : addProduto()">
     <ion-list lines="full" class="ion-no-margin ion-no-padding">
       <ion-item>
         <ion-label position="stacked">Nome do Produto</ion-label>
-        <ion-input formControlName="nome" type="text" required></ion-input>
+        <ion-input formControlName="nome" clearInput="true" inputMode="text" required></ion-input>
       </ion-item>
     </ion-list>
     <ion-list lines="full" class="ion-no-margin ion-no-padding">
       <ion-item>
         <ion-label position="stacked">Quantidade em Estoque</ion-label>
-        <ion-input formControlName="quantidade" type="number" required></ion-input>
+        <ion-input formControlName="quantidade" clearInput="true" inputMode="number" required></ion-input>
       </ion-item>
     </ion-list>
     <ion-list lines="full" class="ion-no-margin ion-no-padding">
       <ion-item>
         <ion-label position="stacked">Preço de Compra</ion-label>
-        <ion-input formControlName="precoCompra" type="number" required></ion-input>
+        <ion-input formControlName="precoCompra" clearInput="true" type="number" required></ion-input>
       </ion-item>
     </ion-list>
     <ion-list lines="full" class="ion-no-margin ion-no-padding">
       <ion-item>
         <ion-label position="stacked">Margem de lucro</ion-label>
-        <ion-input formControlName="lucro" type="text" required></ion-input>
+        <ion-input formControlName="lucro" clearInput="true" type="number" required></ion-input>
       </ion-item>
     </ion-list>
     <ion-list lines="full" class="ion-no-margin ion-no-padding">
       <ion-item>
         <ion-label position="stacked">Fornecedor</ion-label>
-        <ion-input formControlName="fornecedor" type="text" required></ion-input>
+        <ion-input formControlName="fornecedor" clearInput="true" inputMode="text" required></ion-input>
       </ion-item>
     </ion-list>
     <div class="ion-padding">
-      <ion-button [disabled]="produtoForm.invalid" expand="block" type="submit" class="ion-no-margin">{{editable ? 'Editar' : 'Cadastrar'}}</ion-button>
+      <ion-button [disabled]="produtoForm.invalid" type="submit" buttonType="submit" expand="block" type="submit" class="ion-no-margin">{{editable ? 'Editar' : 'Cadastrar'}}</ion-button>
     </div>
   </form>
 

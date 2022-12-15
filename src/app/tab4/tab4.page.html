@@ -32,11 +32,11 @@
           <ion-col size="7">{{ fornecedor.nome }}</ion-col>
           <ion-col class="ion-hide-md-down">{{ fornecedor.cnpj }}</ion-col>
           <ion-col class="ion-hide-md-down">{{ fornecedor.contato }}</ion-col>
-          <ion-col class="ion-hide-md-down">{{ fornecedor.logradouro }}</ion-col>
+          <ion-col class="ion-hide-md-down">{{ fornecedor.endereco.logradouro }}</ion-col>
           <ion-col class="ion-hide-md-down">{{ fornecedor.numero }}</ion-col>
-          <ion-col class="ion-hide-md-down">{{ fornecedor.bairro }}</ion-col>
-          <ion-col class="ion-hide-md-down">{{ fornecedor.cidade }}</ion-col>
-          <ion-col class="ion-hide-md-down">{{ fornecedor.cep }}</ion-col>
+          <ion-col class="ion-hide-md-down">{{ fornecedor.endereco.bairro }}</ion-col>
+          <ion-col class="ion-hide-md-down">{{ fornecedor.endereco.localidade }}</ion-col>
+          <ion-col class="ion-hide-md-down">{{ fornecedor.endereco.cep }}</ion-col>
           <ion-col size="4" class="show-xs-col hidden-md-col hidden-xl-col hidden-lg-col"><ion-button class="btn-modal" fill="clear" (click)="openModal(fornecedor.id)">Show</ion-button></ion-col>
         </ion-row>
     </ion-grid>
