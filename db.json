@@ -1,22 +1,6 @@
 {
   "produto": [
     {
-      "nome": "Exemplo",
-      "quantidade": 1,
-      "precoCompra": 12,
-      "fornecedor": "Teste",
-      "lucro": "12",
-      "id": 1
-    },
-    {
-      "nome": "Quadro Batman",
-      "quantidade": 1,
-      "precoCompra": 100,
-      "fornecedor": "StarFrames",
-      "lucro": "12",
-      "id": 2
-    },
-    {
       "nome": "Quadro Bope",
       "quantidade": 10,
       "precoCompra": 100,
