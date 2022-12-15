@@ -30,17 +30,6 @@
       "cidade": "quadro city",
       "cep": "123456",
       "id": 4
-    },
-    {
-      "nome": "FloresComercio",
-      "cnpj": 123456789,
-      "contato": "123456789",
-      "logradouro": "Rua General Venâncio Flores",
-      "numero": "150",
-      "bairro": "Leblon",
-      "cidade": "Rio de Janeiro",
-      "cep": "22441-090",
-      "id": 5
     }
   ]
 }
