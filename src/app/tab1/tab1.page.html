@@ -13,7 +13,7 @@
     </ion-toolbar>
   </ion-header>
 
-  <form [formGroup]="produtoForm" #createForm="ngForm" (ngSubmit)="createProduto(produtoForm.value)" fullscreen (submit)="editable ? editProduto() : addProduto()">
+  <form [formGroup]="produtoForm" #createForm="ngForm" fullscreen (submit)="editable ? editProduto(produtoForm.value) : createProduto(produtoForm.value)">
     <ion-list lines="full" class="ion-no-margin ion-no-padding">
       <ion-item>
         <ion-label position="stacked">Nome do Produto</ion-label>

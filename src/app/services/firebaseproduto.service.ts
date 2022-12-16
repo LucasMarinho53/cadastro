@@ -23,7 +23,7 @@ export class FirebaseprodutoService {
     );
   }
 
-  find(id: string): Observable<Produto> {
+  findproduto(id: string): Observable<Produto> {
     const document = doc(this.firestore, `produtos/${id}`);
     return docSnapshots(document)
     .pipe(

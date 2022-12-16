@@ -6,7 +6,6 @@ import { Endereco } from '../model/endereco.model';
 import { Fornecedor } from '../model/fornecedor.model';
 import { CorreiosService } from '../services/correios.service';
 import { FirebasefornecedorService } from '../services/firebasefornecedor.service';
-import { FornecedorService } from '../services/fornecedor.service';
 
 @Component({
   selector: 'app-tab3',
@@ -22,7 +21,6 @@ export class Tab3Page {
   editable:boolean = false;
 
   constructor(private formBuilder: FormBuilder,
-     private fornecedorService: FornecedorService,
      private router: Router, private route: ActivatedRoute,
      private correiosService: CorreiosService,
      private firebasefornecedorService: FirebasefornecedorService) {}
@@ -40,10 +38,10 @@ export class Tab3Page {
       });
 
     this.route.paramMap.subscribe(params => {
-      const fornecedorId = +params.get('id')!;
+      const fornecedorId = params.get('id')!;
 
       if(fornecedorId){
-        this.fornecedorService.getFornecedor(fornecedorId).subscribe({
+        this.firebasefornecedorService.findfornecedor(fornecedorId).subscribe({
           next: (fornecedorDB:Fornecedor) => {
             this.fornecedor = fornecedorDB;
             this.editable = true;
@@ -59,19 +57,7 @@ export class Tab3Page {
     let newFornecedor:Fornecedor = {...values};
     this.firebasefornecedorService.savefornecedor(newFornecedor);
     this.createForm.reset();
-  }
-
-  addFornecedor(){
-    const newFornecedor = this.fornecedorForm.getRawValue() as Fornecedor;
-
-    this.fornecedorService.insertFornecedor(newFornecedor)
-        .subscribe({
-          next: (result:any) => {
-            this.fornecedorForm.reset();
-            this.router.navigateByUrl('/tabs/tab4');
-          },
-          error: (error:any) => { console.log(error)}
-        });
+    this.router.navigateByUrl('/tabs/tab4');
   }
 
   loadForm(){
@@ -104,19 +90,13 @@ export class Tab3Page {
   });
   }
 
-  editFornecedor(){
+  editFornecedor(values: any){
     const editFornecedor = this.fornecedorForm.getRawValue() as Fornecedor;
+    let fornecedor: Fornecedor = { ...values };
     editFornecedor.id = this.fornecedor.id;
 
-    this.fornecedorService.updateFornecedor(editFornecedor).subscribe({
-      next: () => {
-        this.router.navigateByUrl('/tabs/tab4');
-        this.fornecedorForm.reset();
-      },
-      error: (err) => {
-        console.error(err);
-        this.fornecedorForm.reset();
-      }
-    });
+    this.firebasefornecedorService.updatefornecedor(editFornecedor);
+    this.fornecedorForm.reset();
+    this.router.navigateByUrl('/tabs/tab4');
   }
 }

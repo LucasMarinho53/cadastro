@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
 import { Fornecedor } from '../model/fornecedor.model';
-import { FornecedorService } from '../services/fornecedor.service';
+import { FirebasefornecedorService } from '../services/firebasefornecedor.service';
 
 @Component({
   selector: 'app-modal-fornecedor-details',
@@ -13,7 +13,9 @@ export class ModalFornecedorDetailsComponent implements OnInit {
 
   @Input() fornecedor!: Fornecedor;
 
-  constructor(private modalCtrl: ModalController, private service: FornecedorService, private router: Router) {}
+  constructor(private modalCtrl: ModalController,
+    private router: Router,
+    private firebasefornecedorService: FirebasefornecedorService) {}
 
   cancel(){
     return this.modalCtrl.dismiss(null, 'cancel');
@@ -27,11 +29,8 @@ export class ModalFornecedorDetailsComponent implements OnInit {
   }
 
   delete(id:string){
-    this.service.deleteFornecedor(id).subscribe({
-      next: () => {this.modalCtrl.dismiss(null, 'cancel');},
-      error: () => {console.error(console.error);}
-    });
-
+    this.firebasefornecedorService.deletefornecedor(id);
+    this.modalCtrl.dismiss(null, 'cancel');
   }
 
 }

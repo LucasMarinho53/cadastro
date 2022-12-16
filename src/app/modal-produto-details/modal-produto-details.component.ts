@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
 import { Produto } from '../model/produto.model';
-import { ProdutoService } from '../services/produto.service';
+import { FirebaseprodutoService } from '../services/firebaseproduto.service';
 
 @Component({
   selector: 'app-modal-produto-details',
@@ -13,7 +13,9 @@ export class ModalProdutoDetailsComponent implements OnInit {
 
   @Input() produto!: Produto;
 
-  constructor(private modalCtrl: ModalController, private service: ProdutoService, private router: Router) { }
+  constructor(private modalCtrl: ModalController,
+    private router: Router,
+    private firebaseprodutoService: FirebaseprodutoService) { }
 
   cancel(){
     return this.modalCtrl.dismiss(null, 'cancel');
@@ -28,11 +30,8 @@ export class ModalProdutoDetailsComponent implements OnInit {
 
 
   delete(id:string){
-    this.service.deleteProduto(id).subscribe({
-      next: () => {this.modalCtrl.dismiss(null, 'cancel');},
-      error: () => {console.error(console.error);}
-    });
-
-  }
+    this.firebaseprodutoService.deleteproduto(id);
+    this.modalCtrl.dismiss(null, 'cancel');
+    };
 
 }

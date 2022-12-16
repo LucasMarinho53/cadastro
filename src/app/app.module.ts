@@ -8,7 +8,6 @@ import { environment } from 'src/environments/environment';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ProdutoService } from './services/produto.service';
 
 import { provideFirebaseApp, initializeApp } from '@angular/fire/app'
 import { provideFirestore, getFirestore } from '@angular/fire/firestore'
@@ -19,7 +18,7 @@ import { provideFirestore, getFirestore } from '@angular/fire/firestore'
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => getFirestore())
   ],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, ProdutoService],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

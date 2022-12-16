@@ -4,7 +4,6 @@ import { Observable } from 'rxjs';
 import { ModalProdutoDetailsComponent } from '../modal-produto-details/modal-produto-details.component';
 import { Produto } from '../model/produto.model';
 import { FirebaseprodutoService } from '../services/firebaseproduto.service';
-import { ProdutoService } from '../services/produto.service';
 
 @Component({
   selector: 'app-tab2',
@@ -15,7 +14,7 @@ export class Tab2Page {
 
   produtos!: Produto[];
 
-  constructor(private service: ProdutoService,
+  constructor(
     private modalCtrl: ModalController,
     private firebaseprodutoService: FirebaseprodutoService) {}
 
@@ -27,7 +26,7 @@ export class Tab2Page {
   }
 
   listaProduto() {
-    this.service.getProdutos().subscribe({
+    this.firebaseprodutoService.listproduto().subscribe({
       next:(result) => this.produtos = result,
       error:(err) => console.error(err),
     });

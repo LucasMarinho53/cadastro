@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { ModalFornecedorDetailsComponent } from '../modal-fornecedor-details/modal-fornecedor-details.component';
 import { Fornecedor } from '../model/fornecedor.model';
-import { FornecedorService } from '../services/fornecedor.service';
 import { OverlayEventDetail } from '@ionic/core'
 import { FirebasefornecedorService } from '../services/firebasefornecedor.service';
 @Component({
@@ -14,7 +13,7 @@ export class Tab4Page {
 
   fornecedores!: Fornecedor[];
 
-  constructor(private service: FornecedorService,
+  constructor(
     private modalCtrl: ModalController,
     private firebasefornecedorService: FirebasefornecedorService) {}
 
@@ -26,7 +25,7 @@ export class Tab4Page {
   }
 
   listaFornecedor() {
-    this.service.getFornecedores().subscribe({
+    this.firebasefornecedorService.listfornecedor().subscribe({
       next:(result) => this.fornecedores = result,
       error:(err) => console.error(err),
     });

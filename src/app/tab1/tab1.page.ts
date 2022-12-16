@@ -4,7 +4,6 @@ import { constants } from 'buffer';
 import { Constants } from '../model/constants';
 import { Produto } from '../model/produto.model';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ProdutoService } from '../services/produto.service';
 import { FirebaseprodutoService } from '../services/firebaseproduto.service';
 
 
@@ -22,7 +21,6 @@ export class Tab1Page implements OnInit{
   editable:boolean = false;
 
   constructor(private formBuilder: FormBuilder,
-    private produtoService: ProdutoService,
     private router: Router,
     private route: ActivatedRoute,
     private firebaseprodutoService: FirebaseprodutoService) {}
@@ -38,10 +36,10 @@ export class Tab1Page implements OnInit{
 
 
   this.route.paramMap.subscribe(params => {
-    const produtoId = +params.get('id')!;
+    const produtoId = params.get('id')!;
 
     if(produtoId){
-      this.produtoService.getProduto(produtoId).subscribe({
+      this.firebaseprodutoService.findproduto(produtoId).subscribe({
         next: (produtoDB:Produto) => {
           this.produto = produtoDB;
           this.editable = true;
@@ -60,20 +58,7 @@ export class Tab1Page implements OnInit{
 
     this.firebaseprodutoService.saveproduto(newProduto);
     this.createForm.reset();
-  }
-
-  addProduto(){
-    const produto = this.produtoForm.getRawValue() as Produto;
-    produto.precoVenda = this.compra +(this.compra * this.porcentagem/100)
-
-    this.produtoService.insertProduto(produto)
-        .subscribe({
-          next: (result:any) => {
-            this.produtoForm.reset();
-            this.router.navigateByUrl('/tabs/tab2');
-          },
-          error: (error:any) => { console.log(error)}
-        })
+    this.router.navigateByUrl('/tabs/tab2');
   }
 
   loadForm(){
@@ -87,22 +72,15 @@ export class Tab1Page implements OnInit{
     });
   }
 
-  editProduto(){
+  editProduto(values: any){
     const editProduto = this.produtoForm.getRawValue() as Produto;
+    let produto: Produto = { ...values };
     editProduto.id = this.produto.id;
     editProduto.precoVenda = this.compra +(this.compra * this.porcentagem/100)
 
-    this.produtoService.updateProduto(editProduto).subscribe({
-      next: () => {
-        this.router.navigateByUrl('/tabs/tab2');
-        this.produtoForm.reset();
-      },
-      error: (err) => {
-        console.error(err);
-        this.produtoForm.reset();
-      }
-    });
-
+    this.firebaseprodutoService.updateproduto(editProduto);
+    this.produtoForm.reset();
+    this.router.navigateByUrl('/tabs/tab2');
   }
 
   get compra(){return this.produtoForm.get('precoCompra')?.value}

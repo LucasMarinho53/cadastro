@@ -37,5 +37,17 @@
       "id": 6
     }
   ],
-  "fornecedor": []
+  "fornecedor": [
+    {
+      "nome": null,
+      "cnpj": null,
+      "contato": null,
+      "logradouro": null,
+      "numero": null,
+      "bairro": null,
+      "cidade": null,
+      "cep": null,
+      "id": 1
+    }
+  ]
 }

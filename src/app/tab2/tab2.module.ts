@@ -7,7 +7,6 @@ import { Tab2Page } from './tab2.page';
 
 import { Tab2PageRoutingModule } from './tab2-routing.module';
 import { HttpClientModule } from '@angular/common/http';
-import { ProdutoService } from '../services/produto.service';
 import { ModalProdutoDetailsModule } from '../modal-produto-details/modal-produto-details.module';
 import { FirebaseprodutoService } from '../services/firebaseproduto.service';
 
@@ -22,6 +21,6 @@ import { FirebaseprodutoService } from '../services/firebaseproduto.service';
     ModalProdutoDetailsModule
   ],
   declarations: [Tab2Page],
-  providers: [ProdutoService, FirebaseprodutoService]
+  providers: [FirebaseprodutoService]
 })
 export class Tab2PageModule {}
